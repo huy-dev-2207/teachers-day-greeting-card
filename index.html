@@ -5,80 +5,128 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chúc mừng Ngày Nhà giáo Việt Nam</title>
 <style>
-:root{--bg:#f8dddd;--rose:#d66d7e;--ink:#3c3032;--paper:#fffaf6}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Arial,sans-serif}body{overflow:hidden;background:var(--bg);color:var(--ink)}
-.screen{position:fixed;inset:0;display:none;align-items:center;justify-content:center;text-align:center;flex-direction:column}.screen.active{display:flex}
-#home{background:radial-gradient(circle at center,#fff7f2 0,#fbe5e3 48%,#f3d5d7 100%)}
-.title{position:absolute;top:13%;width:100%;padding:0 20px;color:var(--rose);font-size:clamp(28px,4vw,52px);line-height:1.2;margin:0}
-.corner{position:absolute;font-size:clamp(36px,5vw,68px);filter:drop-shadow(1px 3px 0 #6e5658);opacity:.88}.tl{top:9%;left:5%}.tr{top:13%;right:7%}.bl{bottom:10%;left:8%}.br{bottom:11%;right:7%}
-.envelope-container{position:relative;width:min(420px,85vw);height:300px;margin-top:60px;cursor:pointer;perspective:1000px}
-.envelope-wrapper{position:relative;width:100%;height:100%;transition:transform .4s ease;transform-style:preserve-3d}
-.envelope-body{position:absolute;width:100%;height:220px;background:linear-gradient(135deg,#f49f8e,#ee8f80);border-radius:8px 8px 15px 15px;bottom:0;box-shadow:0 15px 25px rgba(91,57,62,.25);z-index:1}
-.envelope-body::before{content:"";position:absolute;top:0;left:0;width:100%;height:50%;background:linear-gradient(to bottom,rgba(255,255,255,.1),transparent);border-radius:8px 8px 0 0}
-.envelope-flap{position:absolute;width:100%;height:0;top:0;left:0;border-left:210px solid transparent;border-right:210px solid transparent;border-top:140px solid #ffb09f;z-index:2;transition:transform .6s cubic-bezier(.68,-0.55,.265,1.55);transform-origin:top center;box-shadow:0 -3px 8px rgba(120,60,60,.15)}
-.envelope-open .envelope-flap{transform:rotateX(180deg)}
-.paper-label{position:absolute;z-index:1;top:35px;left:50%;transform:translateX(-50%);width:260px;height:110px;border:2px dashed #92746e;background:#fff4bd;padding:16px 12px;color:#27394a;font-weight:bold;text-align:center}
-.paper-label .line1{font-size:18px}
-.paper-label .line2{color:#df5d64;font-size:26px;margin:4px 0}
-.paper-label .line3{font-size:14px;opacity:.8}
-.seal{position:absolute;z-index:3;top:85px;left:50%;transform:translateX(-50%);width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#e74c3c,#c0392b);color:white;font-size:32px;line-height:56px;text-align:center;box-shadow:0 4px 8px rgba(180,50,40,.3);transition:transform .6s ease .3s}
-.envelope-open .seal{transform:translateX(-50%) scale(1.15)}
-.hint{position:absolute;bottom:10%;width:100%;color:#d48691;font-size:23px;font-weight:bold;animation:pulse 1.8s infinite}@keyframes pulse{50%{opacity:.55}}
-#letterScreen{background:rgba(48,39,40,.93);padding:20px;overflow:auto;opacity:0;transition:opacity .8s ease .4s;z-index:0}.screen.active #letterScreen{opacity:1;z-index:10}
-.letter{position:relative;width:min(720px,94vw);padding:46px 55px 38px;background:var(--paper);border:2px dashed #df8589;border-radius:20px;box-shadow:0 20px 60px #211b1c;animation:open .8s cubic-bezier(.2,1.5,.4,1) .5s both}@keyframes open{from{opacity:0;transform:scale(.45) rotate(-3deg)}to{opacity:1;transform:scale(1)}}
-.heart{position:absolute;color:#ef4d47;font-size:30px}.heart.top{right:18px;top:-20px}.heart.bottom{left:20px;bottom:-20px}
-.letter h2{margin:0 0 26px;font-family:Georgia,serif;font-size:clamp(25px,4vw,38px);color:#202329}
-.letter p{margin:15px 0;font-size:18px;line-height:1.8;text-align:center}
-.closing{padding-top:18px;border-top:2px solid #e88c91;color:#d94e59;font-weight:bold}
-@media(max-width:600px){.title{top:9%;font-size:28px}.envelope-container{transform:scale(.75);margin-top:30px}.hint{bottom:8%;font-size:18px}.letter{padding:34px 22px}.letter p{font-size:15px}}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; background: #f8dddd; min-height: 100vh; overflow: hidden; }
+
+.screen { position: fixed; width: 100%; height: 100%; display: none; align-items: center; justify-content: center; z-index: 1; }
+.screen.show { display: flex; }
+
+#home { background: radial-gradient(circle at center, #fff7f2 0%, #fbe5e3 48%, #f3d5d7 100%); flex-direction: column; }
+
+.title { position: absolute; top: 60px; font-size: 42px; color: #d66d7e; font-weight: bold; text-align: center; width: 100%; }
+
+.corner-flower { position: absolute; font-size: 50px; opacity: 0.85; }
+.corner-tl { top: 40px; left: 30px; }
+.corner-tr { top: 60px; right: 40px; }
+.corner-bl { bottom: 50px; left: 40px; }
+.corner-br { bottom: 55px; right: 30px; }
+
+.envelope-container { position: relative; width: 360px; height: 280px; cursor: pointer; margin-top: 70px; perspective: 1000px; }
+
+.envelope-flap { position: absolute; width: 100%; height: 150px; top: 0; left: 0; background: #ffb09f; clip-path: polygon(0% 0%, 50% 60%, 100% 0%, 100% 100%, 0% 100%); transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); transform: rotateX(0deg); transform-origin: top center; z-index: 3; box-shadow: 0 -2px 5px rgba(120, 60, 60, 0.1); }
+
+.envelope-container.opened .envelope-flap { transform: rotateX(-180deg); }
+
+.envelope-body { position: absolute; width: 100%; height: 170px; bottom: 0; left: 0; background: #f49f8e; border-radius: 8px 8px 15px 15px; box-shadow: 0 15px 25px rgba(91, 57, 62, 0.25); z-index: 1; }
+
+.envelope-paper { position: absolute; top: 50px; left: 50%; transform: translateX(-50%); width: 280px; height: 120px; background: #fff4bd; border: 2px dashed #92746e; padding: 18px 15px; text-align: center; z-index: 5; border-radius: 4px; }
+
+.paper-text1 { font-size: 15px; color: #27394a; font-weight: bold; margin-bottom: 3px; }
+.paper-text2 { font-size: 20px; color: #df5d64; font-weight: bold; margin: 5px 0; }
+.paper-text3 { font-size: 11px; color: #27394a; opacity: 0.75; }
+
+.envelope-seal { position: absolute; top: 110px; left: 50%; transform: translateX(-50%); width: 48px; height: 48px; background: #e74c3c; border-radius: 50%; color: white; font-size: 26px; line-height: 48px; text-align: center; z-index: 10; box-shadow: 0 4px 8px rgba(180, 50, 40, 0.3); }
+
+.hint { position: absolute; bottom: 40px; font-size: 18px; color: #d48691; font-weight: bold; text-align: center; }
+
+#letter { background: rgba(48, 39, 40, 0.93); flex-direction: column; padding: 30px 20px; opacity: 0; visibility: hidden; transition: opacity 0.8s ease 0.6s, visibility 0.8s ease 0.6s; }
+
+#letter.show { opacity: 1; visibility: visible; }
+
+.letter-content { position: relative; width: 100%; max-width: 700px; background: #fffaf6; border: 2px dashed #df8589; border-radius: 20px; padding: 45px 45px; box-shadow: 0 20px 60px rgba(33, 27, 28, 0.8); }
+
+.letter-heart { position: absolute; color: #ef4d47; font-size: 26px; }
+.letter-heart.top { right: 12px; top: -14px; }
+.letter-heart.bottom { left: 12px; bottom: -14px; }
+
+.letter-content h2 { margin: 0 0 24px; font-size: 30px; color: #202329; font-family: Georgia, serif; text-align: center; }
+
+.letter-content p { margin: 13px 0; font-size: 15px; line-height: 1.8; color: #3c3032; text-align: center; }
+
+.letter-content .closing { margin-top: 18px; padding-top: 14px; border-top: 2px solid #e88c91; color: #d94e59; font-weight: bold; font-size: 14px; }
+
+@media (max-width: 600px) {
+  .title { font-size: 28px; top: 40px; }
+  .envelope-container { width: 300px; height: 240px; margin-top: 40px; }
+  .envelope-paper { width: 240px; height: 100px; padding: 12px 10px; }
+  .paper-text1 { font-size: 13px; }
+  .paper-text2 { font-size: 18px; }
+  .paper-text3 { font-size: 10px; }
+  .letter-content { padding: 35px 25px; }
+  .letter-content h2 { font-size: 24px; margin-bottom: 18px; }
+  .letter-content p { font-size: 13px; }
+}
 </style>
 </head>
 <body>
-<section id="home" class="screen active">
-  <div class="corner tl">🌷</div><div class="corner tr">🌷</div><div class="corner bl">🌷</div><div class="corner br">🌷</div>
+
+<!-- SCREEN 1: THƯ ĐÓNG KÍN -->
+<section id="home" class="screen show">
+  <div class="corner-flower corner-tl">🌷</div>
+  <div class="corner-flower corner-tr">🌷</div>
+  <div class="corner-flower corner-bl">🌷</div>
+  <div class="corner-flower corner-br">🌷</div>
+
   <h1 class="title">Chúc mừng Ngày Nhà giáo Việt Nam</h1>
-  
-  <div class="envelope-container" onclick="openEnvelope()">
-    <div class="envelope-wrapper" id="envelopeWrapper">
-      <div class="envelope-body"></div>
-      <div class="envelope-flap"></div>
-      <div class="paper-label">
-        <div class="line1">Kính gửi</div>
-        <div class="line2">Cô Hằng</div>
-        <div class="line3">♥ Mở thư ♥</div>
-      </div>
-      <div class="seal">♥</div>
+
+  <div class="envelope-container" id="envelopeBtn" onclick="openEnvelope()">
+    <div class="envelope-flap"></div>
+    <div class="envelope-body"></div>
+    <div class="envelope-paper">
+      <div class="paper-text1">Kính gửi</div>
+      <div class="paper-text2">Cô Hằng</div>
+      <div class="paper-text3">♥ Mở thư ♥</div>
     </div>
+    <div class="envelope-seal">♥</div>
   </div>
-  
+
   <p class="hint">💌 Chạm vào bức thư để mở 💌</p>
 </section>
 
-<section id="letterScreen" class="screen active">
-  <article class="letter">
-    <span class="heart top">💌</span><span class="heart bottom">💌</span>
+<!-- SCREEN 2: LỜI CHÚC -->
+<section id="letter" class="screen show">
+  <div class="letter-content">
+    <span class="letter-heart top">♥</span>
+    <span class="letter-heart bottom">♥</span>
+    
     <h2>💌 Kính gửi Cô Hằng! 💌</h2>
+    
     <p>Hôm nay là ngày 20/11, ngày đặc biệt để chúng em gửi lời tri ân đến Cô Hằng — những người đã tận tâm dìu dắt chúng em trên con đường tri thức.</p>
+    
     <p>Cảm ơn Cô Hằng vì những bài học, những lời khuyên và sự quan tâm giản dị mỗi ngày.</p>
+    
     <p>Chúc Cô Hằng luôn vui vẻ, mạnh khỏe và thật hạnh phúc bên những học trò thân yêu.</p>
+    
     <p>Cô Hằng là ngọn đèn soi sáng và là người truyền cảm hứng để chúng em cố gắng từng ngày.</p>
+    
     <p class="closing">❤️ Chúc mừng Ngày Nhà giáo Việt Nam 20/11 ❤️</p>
-  </article>
+  </div>
 </section>
 
 <script>
-const envelopeWrapper = document.getElementById('envelopeWrapper');
-const homeScreen = document.getElementById('home');
-const letterScreen = document.getElementById('letterScreen');
-
 function openEnvelope() {
-  envelopeWrapper.classList.add('envelope-open');
+  const envelope = document.getElementById('envelopeBtn');
+  const home = document.getElementById('home');
+  const letter = document.getElementById('letter');
+  
+  envelope.classList.add('opened');
   
   setTimeout(() => {
-    homeScreen.classList.remove('active');
-    letterScreen.classList.add('active');
-  }, 500);
+    home.classList.remove('show');
+    letter.classList.add('show');
+  }, 800);
 }
 </script>
+
 </body>
 </html>
