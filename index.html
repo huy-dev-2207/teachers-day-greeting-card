@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chúc mừng Ngày Nhà giáo Việt Nam</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;overflow:hidden;font-family:Arial,sans-serif;background:#fce8e5;color:#403338}.screen{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transition:opacity .7s,transform .7s}.hidden{display:none}.intro h1{color:#d86c7e;font-size:clamp(2rem,5vw,4rem);margin:0 0 35px}.bouquet{position:relative;width:270px;height:290px;cursor:pointer;animation:float 3s ease-in-out infinite}.bouquet:hover{transform:scale(1.05)}.flower{position:absolute;font-size:70px;filter:drop-shadow(0 8px 4px #b88);animation:sway 2s ease-in-out infinite}.f1{left:55px;top:30px}.f2{left:110px;top:0;animation-delay:.25s}.f3{left:150px;top:45px;animation-delay:.5s}.f4{left:10px;top:75px;animation-delay:.75s}.f5{left:95px;top:70px;animation-delay:1s}.paper{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:205px;height:130px;background:#ffb59f;clip-path:polygon(0 0,100% 0,78% 100%,22% 100%);z-index:-1}.ribbon{position:absolute;left:50%;bottom:0;width:25px;height:90px;background:#e78083;transform:translateX(-50%);border-radius:8px}@keyframes float{50%{transform:translateY(-12px)}}@keyframes sway{50%{transform:rotate(5deg) translateY(-5px)}}.hint{font-size:1.5rem;color:#c75d6f;font-weight:bold}.decor{position:fixed;font-size:32px;opacity:.7;animation:float 4s infinite}.d1{left:8%;top:20%}.d2{right:10%;top:25%}.d3{left:15%;bottom:15%}.letter-screen{background:rgba(45,35,35,.72);padding:25px}.letter{position:relative;max-width:700px;background:#fff8f4;border-radius:22px;padding:48px 55px;box-shadow:0 20px 70px #34242a;border:2px dashed #e98c91;animation:open .8s ease-out}.letter:before,.letter:after{content:'♥';position:absolute;color:#e8757d;font-size:25px}.letter:before{top:12px;right:18px}.letter:after{bottom:10px;left:18px}@keyframes open{from{opacity:0;transform:scale(.4) rotate(-5deg)}to{opacity:1;transform:scale(1) rotate(0)}}.letter h2{font-size:clamp(1.7rem,4vw,2.5rem);margin:0 0 25px}.letter p{font-size:1.15rem;line-height:1.8;margin:12px 0}.letter .final{color:#d34f61;font-weight:bold;font-size:1.3rem}.btn{border:0;border-radius:25px;padding:12px 25px;background:#df7180;color:white;font-size:1rem;cursor:pointer;margin-top:20px}.btn:hover{background:#c95668;transform:translateY(-2px)}
+</style>
+</head>
+<body>
+<div class="decor d1">🌹</div><div class="decor d2">🌷</div><div class="decor d3">🌹</div>
+<section id="intro" class="screen intro">
+  <h1>Chúc mừng Ngày Nhà giáo Việt Nam</h1>
+  <div class="bouquet" onclick="openLetter()" aria-label="Nhấn vào bó hoa để mở thư">
+    <div class="flower f1">🌹</div><div class="flower f2">🌹</div><div class="flower f3">🌷</div><div class="flower f4">🌹</div><div class="flower f5">🌷</div>
+    <div class="paper"></div><div class="ribbon"></div>
+  </div>
+  <p class="hint">Chạm vào bó hoa</p>
+</section>
+<section id="letterScreen" class="screen letter-screen hidden">
+  <article class="letter">
+    <h2>Kính gửi Thầy Cô!</h2>
+    <p>Hôm nay là ngày 20/11, ngày đặc biệt để chúng em gửi lời tri ân đến thầy cô — những người đã tận tâm dìu dắt chúng em trên con đường tri thức.</p>
+    <p>Cảm ơn thầy cô vì những bài học, những lời khuyên và sự quan tâm giản dị mỗi ngày.</p>
+    <p>Chúc thầy cô luôn vui vẻ, mạnh khỏe và thật hạnh phúc bên những học trò thân yêu.</p>
+    <p>Thầy cô là ngọn đèn soi sáng và là người truyền cảm hứng để chúng em cố gắng từng ngày.</p>
+    <p class="final">❤️ Chúc mừng Ngày Nhà giáo Việt Nam 20/11 ❤️</p>
+    <button class="btn" onclick="closeLetter()">← Xem lại bó hoa</button>
+  </article>
+</section>
+<script>
+function openLetter(){document.getElementById('intro').classList.add('hidden');document.getElementById('letterScreen').classList.remove('hidden')}
+function closeLetter(){document.getElementById('letterScreen').classList.add('hidden');document.getElementById('intro').classList.remove('hidden')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLetter()})
+</script>
+</body>
+</html>
