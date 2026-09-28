@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chúc mừng Ngày Nhà giáo Việt Nam</title>
+<title>Chuc mung Ngay Nha giao Viet Nam</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: Arial, sans-serif; background: #f8dddd; min-height: 100vh; overflow: hidden; }
 
-.screen { position: fixed; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; z-index: 1; }
-.screen { display: none; }
+.screen { position: fixed; width: 100%; height: 100%; display: none; align-items: center; justify-content: center; z-index: 1; }
 .screen.active { display: flex; }
 
 #home { background: radial-gradient(circle at center, #fff7f2 0%, #fbe5e3 48%, #f3d5d7 100%); flex-direction: column; }
@@ -24,9 +23,9 @@ body { font-family: Arial, sans-serif; background: #f8dddd; min-height: 100vh; o
 
 .envelope-container { position: relative; width: 360px; height: 280px; cursor: pointer; margin-top: 70px; perspective: 1000px; }
 
-.envelope-flap { position: absolute; width: 100%; height: 150px; top: 0; left: 0; background: #ffb09f; clip-path: polygon(0% 0%, 50% 60%, 100% 0%, 100% 100%, 0% 100%); transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); transform: rotateX(0deg); transform-origin: top center; z-index: 3; box-shadow: 0 -2px 5px rgba(120, 60, 60, 0.1); }
+.envelope-flap { position: absolute; width: 100%; height: 150px; top: 0; left: 0; background: #ffb09f; clip-path: polygon(0% 0%, 50% 60%, 100% 0%, 100% 100%, 0% 100%); transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.8s ease; transform: rotateX(0deg); transform-origin: top center; z-index: 3; box-shadow: 0 -2px 5px rgba(120, 60, 60, 0.1); opacity: 1; }
 
-.envelope-container.opened .envelope-flap { transform: rotateX(-180deg); }
+.envelope-container.opened .envelope-flap { transform: rotateX(-180deg); opacity: 0; }
 
 .envelope-body { position: absolute; width: 100%; height: 170px; bottom: 0; left: 0; background: #f49f8e; border-radius: 8px 8px 15px 15px; box-shadow: 0 15px 25px rgba(91, 57, 62, 0.25); z-index: 1; }
 
@@ -42,7 +41,12 @@ body { font-family: Arial, sans-serif; background: #f8dddd; min-height: 100vh; o
 
 #letter { background: rgba(48, 39, 40, 0.93); flex-direction: column; padding: 30px 20px; }
 
-.letter-content { position: relative; width: 100%; max-width: 700px; background: #fffaf6; border: 2px dashed #df8589; border-radius: 20px; padding: 45px 45px; box-shadow: 0 20px 60px rgba(33, 27, 28, 0.8); }
+.letter-content { position: relative; width: 100%; max-width: 700px; background: #fffaf6; border: 2px dashed #df8589; border-radius: 20px; padding: 45px 45px; box-shadow: 0 20px 60px rgba(33, 27, 28, 0.8); animation: slideUp 0.6s ease-out; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 .letter-heart { position: absolute; color: #ef4d47; font-size: 26px; }
 .letter-heart.top { right: 12px; top: -14px; }
@@ -69,46 +73,46 @@ body { font-family: Arial, sans-serif; background: #f8dddd; min-height: 100vh; o
 </head>
 <body>
 
-<!-- SCREEN 1: THƯ ĐÓNG KÍN -->
+<!-- SCREEN 1: THU DONG KIN -->
 <section id="home" class="screen active">
   <div class="corner-flower corner-tl">🌷</div>
   <div class="corner-flower corner-tr">🌷</div>
   <div class="corner-flower corner-bl">🌷</div>
   <div class="corner-flower corner-br">🌷</div>
 
-  <h1 class="title">Chúc mừng Ngày Nhà giáo Việt Nam</h1>
+  <h1 class="title">Chuc mung Ngay Nha giao Viet Nam</h1>
 
   <div class="envelope-container" id="envelopeBtn" onclick="openEnvelope()">
     <div class="envelope-flap"></div>
     <div class="envelope-body"></div>
     <div class="envelope-paper">
-      <div class="paper-text1">Kính gửi</div>
-      <div class="paper-text2">Cô Hằng</div>
-      <div class="paper-text3">♥ Mở thư ♥</div>
+      <div class="paper-text1">Kinh gui</div>
+      <div class="paper-text2">Co Hang</div>
+      <div class="paper-text3">♥ Mo thu ♥</div>
     </div>
     <div class="envelope-seal">♥</div>
   </div>
 
-  <p class="hint">💌 Chạm vào bức thư để mở 💌</p>
+  <p class="hint">💌 Cham vao buc thu de mo 💌</p>
 </section>
 
-<!-- SCREEN 2: LỜI CHÚC -->
+<!-- SCREEN 2: LOI CHUC -->
 <section id="letter" class="screen">
   <div class="letter-content">
     <span class="letter-heart top">♥</span>
     <span class="letter-heart bottom">♥</span>
     
-    <h2>💌 Kính gửi Cô Hằng! 💌</h2>
+    <h2>💌 Kinh gui Co Hang! 💌</h2>
     
-    <p>Hôm nay là ngày 20/11, ngày đặc biệt để chúng em gửi lời tri ân đến Cô Hằng — những người đã tận tâm dìu dắt chúng em trên con đường tri thức.</p>
+    <p>Hom nay la ngay 20/11, ngay dac biet de chung em gui loi tri an den Co Hang — nhung nguoi da tan tam diu dac chung em tren con duong tri thuc.</p>
     
-    <p>Cảm ơn Cô Hằng vì những bài học, những lời khuyên và sự quan tâm giản dị mỗi ngày.</p>
+    <p>Cam on Co Hang vi nhung bai hoc, nhung loi khuyen va su quan tam gian di moi ngay.</p>
     
-    <p>Chúc Cô Hằng luôn vui vẻ, mạnh khỏe và thật hạnh phúc bên những học trò thân yêu.</p>
+    <p>Chuc Co Hang luon vui ve, manh khoe va that hanh phuc ben nhung hoc tro than yeu.</p>
     
-    <p>Cô Hằng là ngọn đèn soi sáng và là người truyền cảm hứng để chúng em cố gắng từng ngày.</p>
+    <p>Co Hang la ngon den soi sang va la nguoi truyen cam hung de chung em co gang tung ngay.</p>
     
-    <p class="closing">❤️ Chúc mừng Ngày Nhà giáo Việt Nam 20/11 ❤️</p>
+    <p class="closing">❤️ Chuc mung Ngay Nha giao Viet Nam 20/11 ❤️</p>
   </div>
 </section>
 
@@ -118,10 +122,8 @@ function openEnvelope() {
   const home = document.getElementById('home');
   const letter = document.getElementById('letter');
   
-  // Thêm class để mở thư
   envelope.classList.add('opened');
   
-  // Sau 0.8s (animation mở xong) thì chuyển sang lời chúc
   setTimeout(() => {
     home.classList.remove('active');
     letter.classList.add('active');
